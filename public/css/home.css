@@ -1,0 +1,22 @@
+
+.control_left, .control_right{
+    font-size: 2.3rem;
+    width: 50px;
+    height: 50px;
+    background-color: blue;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.control_left i, .control_right i{transition: 0.3s;}
+.control_left:hover i{transform: translate(-10px);}
+.control_right:hover i{transform: translate(10px);}
+.control_left{left: -1rem;}
+.control_right{right: -1rem;}

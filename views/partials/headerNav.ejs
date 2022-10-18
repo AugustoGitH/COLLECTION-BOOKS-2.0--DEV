@@ -1,0 +1,156 @@
+<style>
+    header{
+        width: 100%;
+        padding: 0.6rem 2rem;
+        background-color: #FFD700;
+        position: sticky;
+        top: 0;
+        z-index: 99;
+
+    }
+
+    .header_content a{
+        color: black;
+        text-decoration: none;
+    }.header_content a h1{
+        font-size: 1.6rem;
+        font-weight: bold;
+    }
+    .bar_search-header, .bar_search-headerSec{
+        width: 30%;
+        display: flex;
+        align-items: center;
+        box-shadow: 3px 3px #061e2b;
+        background-color: #115173;
+        padding: 0.5rem 1rem;
+    }
+    .bar_search-headerSec{
+       width: 80%;
+    }
+    .container_searchSec{
+        transform: translate(-100%);
+        background-color: #FFD700;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+        padding: 0.5rem 0;
+        transition: 0.3s;
+        position: sticky;
+        top: 67.19px;
+        z-index: 99;
+    }
+    .button_search{
+        background-color: transparent;
+        font-size: 1.3rem;
+        border: none;
+        margin-left: 5px;
+        color: #EEEEEE;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+    .input_search{
+        width: 100%;
+        border: none;
+        background-color: transparent;
+        color: #EEEEEE;
+    }.input_search:focus{
+        outline: none;
+    }
+    .input_search::placeholder{
+        color: #EEEEEE;
+    }
+
+    .icon_register-header:hover span{
+        font-weight: bold;
+    }
+    .icon_register-header{
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        margin-right: 1rem;
+        transition: 0.3s;
+    }.icon_register-header i{
+        font-size: 1.5rem;
+        margin-right: 4px;
+    }.icon_carrinho-header{
+        font-size: 2rem;
+        cursor: pointer;
+        transition: 0.3s;
+        color: black;
+        position: relative;
+    }.icon_carrinho-header:hover{
+        transform: scale(1.1);
+    }
+    #quantity_carrinho{
+        width: 23px;
+        height: 23px;
+        font-size: 0.9rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        border-radius: 50%;
+        position: absolute;
+        bottom: 2px;
+        right: -10px;
+        background-color: black;
+        color: white;
+    }
+    @media (max-width: 700px) {
+        .bar_search-header{
+            display: none;
+        }
+        .container_searchSec{
+            transform: translate(0);
+        }.icon_register-header{
+            display: none;
+        }
+    }
+    @media (max-width: 500px){
+        .header_content a h1{
+            font-size: 1.4rem;
+        }.icon_carrinho-header{
+            font-size: 1.8rem;
+        }#quantity_carrinho{
+            width: 20px;
+            height: 20px;
+            font-size: 0.8rem;
+        }
+        .container_searchSec{
+            top: 62.39px;
+        }
+    }
+</style>
+<header>
+    <div class="header_content d-flex justify-content-around align-items-center">
+        <a href="/"><h1 class="mb-0">Collection Books</h1></a> 
+        <div class="bar_search-header mx-3">
+            <input class="input_search" type="text" placeholder="Pesquise oque deseja">
+            <button class="button_search" onclick="searchItem(this)">
+                <i class='bx bxs-search-alt-2'></i>
+            </button>
+        </div>
+        <nav class="d-flex align-items-center ">
+            <div class="icon_register-header mx-3">
+                <i class='bx bxs-user' ></i>
+                <span>Registrar/logar</span>
+            </div>
+            <a onclick="openCarrinho(this)" class="icon_carrinho-header">
+                <i class='bx bxs-cart'></i>
+                <span id="quantity_carrinho">0</span>
+            </a>
+        </nav>
+    </div>
+</header>
+<div class="container_searchSec">
+    <div class="bar_search-headerSec mx-3">
+        <input class="input_search" type="text" placeholder="Pesquise oque deseja">
+        <button class="button_search" onclick="searchItem(this)">
+            <i class='bx bxs-search-alt-2'></i>
+        </button>
+    </div>
+</div>
+<script src="/public/js/carrinho_header.js"></script>
+<script src="/public/js/search_header.js"></script>

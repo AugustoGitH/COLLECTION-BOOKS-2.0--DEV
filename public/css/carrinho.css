@@ -1,0 +1,161 @@
+
+.sectionItems_carrinho h2{
+    font-size: 1rem;
+}
+.listItems_carrinho{
+    width: 100%;
+    padding: 0;
+    margin-bottom: 6rem;
+}
+.listItems_carrinho li{
+    width: 100%;
+    height: 170px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.236);
+    padding: 0.6rem 0;
+    position: relative;
+}
+.listItems_carrinho li img{
+    height: 100%;
+}
+.titleCard_carrinho{
+    width: 30%;
+}
+.span_infoValue{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+}.listItems_carrinho li span p{
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+}
+.control_unity-display{
+    display: flex;
+}
+
+.control_unity-display span, .display_quantitySpan{
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0.6rem;
+    background-color: transparent;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.49);
+}
+.control_unity-display button{
+    width: 30px;
+    height: 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: transparent;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.49);
+}.iconTrash_button{
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+footer{
+    width: 100%;
+    padding: 1.5rem 2rem;
+    background-color: white;
+    backdrop-filter: blur(5px);
+    position: fixed;
+    bottom: 0;
+}
+.footer_content{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.footer_content span{
+    font-size: 1.1rem;
+    font-weight: bold;
+    width: 20%;
+    margin-left: 0.8rem;
+}
+.button_continuarComprando, .button_comprarAgora{
+    text-decoration: none;
+    background-color: #ffd900ca;
+    font-size: 1.1rem;
+    padding: 0.4rem 1rem;
+    color: black;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.button_continuarComprando{
+    background-color: #115173ca;
+    color: white;
+}
+.button_continuarComprando:hover{
+    background-color: #115173;
+    color: white;
+}
+.button_comprarAgora:hover{
+    background-color: #ffd900;
+    color: black;
+}
+@media (max-width: 600px) {
+    .button_continuarComprando, .button_comprarAgora{
+        display: block;
+        text-align: center;
+        width: 100%;
+        margin: 0.7rem;
+    }
+    .footer_content span{
+        text-align: center;
+    }
+}
+@media (max-width: 560px){
+    .listItems_carrinho li{
+        flex-direction: column;
+        justify-content: space-between;
+        height: 450px;
+        
+    }.listItems_carrinho li img{
+        height: calc(40vw + 50px);
+    }.titleCard_carrinho{
+        font-size: 1.2rem;
+        width: 70%;
+        text-align: center;
+        line-height: 1.3rem;
+        margin-bottom: 1rem;
+    }.listItems_carrinho{
+        margin-bottom: 20rem;
+    }.iconTrash_button{
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }.span_infoValue{
+        order: 2;
+        flex-direction: row;
+    }.control_unity-display{
+        order: 1;
+    }.listItems_carrinho li span p{
+        margin-bottom: 0;
+        margin-right: 0.6rem;
+    }
+
+}
+@media (max-width: 480px) {
+    .button_continuarComprando, .button_comprarAgora{
+        font-size: 0.9rem;
+        width: 100%;
+        margin: 0;
+        margin-bottom: 0.5rem;
+    }footer{
+        padding: 0.4rem 1rem;
+    }.footer_content span{
+        margin-left: 0;
+        font-size: 0.9rem;
+    }
+}
