@@ -16,7 +16,7 @@ function searchItem(el){
 }
 
 function searchCollections(input_value){
-    fetch("http://localhost:3000/api/livros-home").then(res=>{
+    fetch("https://e-commercenode.herokuapp.com/api/livros-home").then(res=>{
         return res.json()
     }).then(json=>{
         let livros = []
@@ -25,7 +25,7 @@ function searchCollections(input_value){
                 livros = livros.concat(livro)
             })
         })
-        let promise = fetch(`http://localhost:3000/api/${livroSelectFilter(livros, input_value)}`).then(res=>{
+        let promise = fetch(`https://e-commercenode.herokuapp.com/api/${livroSelectFilter(livros, input_value)}`).then(res=>{
             return res.json()
         }).then(json=>{
             localStorage.removeItem("Livro_pesquisado")

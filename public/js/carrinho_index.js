@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 const carrinho_functions = {
     livros_getAllCarrinho(){
-        fetch("http://localhost:3000/api/livros-home").then(res=>{
+        fetch("https://e-commercenode.herokuapp.com/api/livros-home").then(res=>{
             return res.json()
         }).then(json=>{
             let livros = []
