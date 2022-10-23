@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "node server"
+  },
   "dependencies": {
     "body-parser": "^1.20.1",
     "cors": "^2.8.5",

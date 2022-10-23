@@ -19,19 +19,8 @@ function gerarRotasBooks(){
     livrosCollection.forEach(livro=>{{
         router.get(`/${livro.id}`, (req, res)=>{
             res.send(JSON.stringify(livro))
-            // res.render("search")
         })
     }})
 }
-// router.post("/livros-search", bodyParser.json(), (req, res)=>{
-//     let response = req.body.response
-//     res.send(JSON.stringify(livros.search(response)))
-// })
-
-// router.get("/resultado-pesquisa", (req, res)=>{
-//     res.send(JSON.stringify(livros.getAll()))
-// })
-
-
 
 module.exports = router
