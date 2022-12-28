@@ -1,40 +1,65 @@
 
-// const input_search = document.querySelector(".input_search")
-// const button_search = document.querySelector(".button_search")
 
-// button_search.addEventListener("click", ()=>{
-//     if(input_search.value){
-//         searchCollections()
-//     }
-// })
+function suggestionSearch(input, livros){
+    let listSuggestion = input.parentNode.querySelector(".list_suggestion")
+    let valueInput = input.value.normalize("NFD").replace(/[^a-zA-Z\s]/g, "").toLowerCase()
+    let regex = new RegExp(`\\b${valueInput}\\b`, 'gi');
+    let livrosSelected = livros.filter(livro=>{
+        let tituloTratado = livro.titulo.normalize("NFD").replace(/[^a-zA-Z\s]/g, "").toLowerCase()
+        return regex.test(tituloTratado)
+    })
 
-function searchItem(el){
-    let input_value = el.parentNode.querySelector(".input_search").value
-    if(input_value){
-        searchCollections(input_value)
+    let generateLiResults = (livros)=>{
+        let result = ""
+        livros.forEach(livro => {
+            result += `
+            <li onclick="infoBook('${livro.id}')">${livro.titulo}</li>
+            `
+        })
+        return result
+    }
+
+    listSuggestion.classList.remove("opacity-0")
+    if(valueInput) listSuggestion.innerHTML = generateLiResults(livrosSelected)
+    else{
+        listSuggestion.innerHTML = ""
+        listSuggestion.classList.add("opacity-0")
     }
 }
-
-function searchCollections(input_value){
-    fetch("https://e-commercenode.herokuapp.com/api/livros-home").then(res=>{
-        return res.json()
-    }).then(json=>{
-        let livros = []
-        json.forEach(collection=>{
-            collection.collection.forEach((livro)=>{
-                livros = livros.concat(livro)
-            })
-        })
-        let promise = fetch(`https://e-commercenode.herokuapp.com/api/${livroSelectFilter(livros, input_value)}`).then(res=>{
-            return res.json()
-        }).then(json=>{
-            localStorage.removeItem("Livro_pesquisado")
-            localStorage.setItem("livro_pesquisado", JSON.stringify([json]))
-            location.href = `/livro_pesquisado`
-        })
-
+function searchBooksPag(button, livros){
+    let inputValue = button.parentNode.parentNode.querySelector("input").value.normalize("NFD").replace(/[^a-zA-Z\s]/g, "").toLowerCase()
+    let regex = new RegExp(`\\b${inputValue}\\b`, 'gi');
+    let livrosSelected = livros.filter(livro=>{
+        let tituloTratado = livro.titulo.normalize("NFD").replace(/[^a-zA-Z\s]/g, "").toLowerCase()
+        return regex.test(tituloTratado)
     })
+    let arrayDesc = livrosSelected.map(livro=> livro.id)
+    fetch(`/api/livros-search/${arrayDesc.join("-")}`)
 }
+
+function infoBook(idBook){
+    location.href = `/info-livro/${idBook}`
+}
+
+async function eventsInputSearch(){
+    let livros = await fetch("/api/livros-all").then(res=>res.json().then(json=> json))
+
+
+    document.querySelectorAll(".input_search").forEach(input=>{
+        input.addEventListener("input", ev=> suggestionSearch(ev.target, livros))
+    })
+
+    document.querySelectorAll(".button_search").forEach(button=>{
+        button.addEventListener("click", ev=> searchBooksPag(ev.target, livros))
+    })
+    
+}
+
+document.addEventListener("DOMContentLoaded", ()=>{
+    eventsInputSearch()
+})
+
+
 function livroSelectFilter(livros, input_search){
     let value_search = input_search.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "")
     let result = livros.filter(livro=>{

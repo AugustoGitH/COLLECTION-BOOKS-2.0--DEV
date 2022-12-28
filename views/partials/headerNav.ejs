@@ -8,7 +8,15 @@
         z-index: 99;
 
     }
+    .opacity-0{
+        opacity: 0;
+    }
 
+    .header_content{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
     .header_content a{
         color: black;
         text-decoration: none;
@@ -23,6 +31,7 @@
         box-shadow: 3px 3px #061e2b;
         background-color: #115173;
         padding: 0.5rem 1rem;
+        position: relative;
     }
     .bar_search-headerSec{
        width: 80%;
@@ -98,7 +107,31 @@
         background-color: black;
         color: white;
     }
+    .list_suggestion{
+        position: absolute;
+        top: 3rem;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        border-top: 2px solid black;
+        border-left: 2px solid black;
+        border-right: 2px solid black;
+        box-shadow: 2px 2px black;
+        padding: 0;
+    }
+    .list_suggestion li{
+        border-bottom: 2px solid black;
+        padding: 0 1rem;
+        cursor: pointer;
+        transition: .3s;
+    }
+    .list_suggestion li:hover{
+        background-color: #FFD700;
+    }
     @media (max-width: 700px) {
+        .header_content{
+            justify-content: space-between;
+        }
         .bar_search-header{
             display: none;
         }
@@ -107,13 +140,17 @@
         }.icon_register-header{
             display: none;
         }
+        .addCarrinho_button{
+            padding: 0.2rem 0.6rem;
+        }
     }
     @media (max-width: 500px){
         .header_content a h1{
             font-size: 1.4rem;
         }.icon_carrinho-header{
             font-size: 1.8rem;
-        }#quantity_carrinho{
+        }
+        #quantity_carrinho{
             width: 20px;
             height: 20px;
             font-size: 0.8rem;
@@ -124,13 +161,14 @@
     }
 </style>
 <header>
-    <div class="header_content d-flex justify-content-around align-items-center">
+    <div class="header_content">
         <a href="/"><h1 class="mb-0">Collection Books</h1></a> 
         <div class="bar_search-header mx-3">
             <input class="input_search" type="text" placeholder="Pesquise oque deseja">
-            <button class="button_search" onclick="searchItem(this)">
+            <button class="button_search">
                 <i class='bx bxs-search-alt-2'></i>
             </button>
+            <ul class="list_suggestion opacity-0"></ul>
         </div>
         <nav class="d-flex align-items-center ">
             <div class="icon_register-header mx-3">
@@ -147,9 +185,10 @@
 <div class="container_searchSec">
     <div class="bar_search-headerSec mx-3">
         <input class="input_search" type="text" placeholder="Pesquise oque deseja">
-        <button class="button_search" onclick="searchItem(this)">
+        <button class="button_search">
             <i class='bx bxs-search-alt-2'></i>
         </button>
+        <ul class="list_suggestion opacity-0"></ul>
     </div>
 </div>
 <script src="/public/js/carrinho_header.js"></script>

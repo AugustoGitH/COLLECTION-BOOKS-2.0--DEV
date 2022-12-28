@@ -10,17 +10,12 @@ router.use(cors(options))
 router.get("/livros-home", (req, res)=>{
     res.send(JSON.stringify(livros.getAll()))
 })
-gerarRotasBooks()
-function gerarRotasBooks(){
-    let livrosCollection = []
-    livros.getAll().forEach((collection)=>{
-        livrosCollection = livrosCollection.concat(collection.collection)
-    })
-    livrosCollection.forEach(livro=>{{
-        router.get(`/${livro.id}`, (req, res)=>{
-            res.send(JSON.stringify(livro))
-        })
-    }})
-}
+router.get("/livros-all", (req, res)=>{
+    res.send(JSON.stringify(livros.getAllLivros()))
+})
+router.get("/livros-search/:ids", (req, res)=>{
+    console.log(req.params.ids.split("-"))
+})
+
 
 module.exports = router

@@ -5,7 +5,8 @@ const path = require("path")
 const fs = require("fs")
 const apiRoute = require("./rotas/api")
 
-const PORT = process.env.PORT || 3000
+const livrosDB = require("./banco_dados/livros")
+const PORT = 3000
 
 
 app.use('/public', express.static('public'));
@@ -21,6 +22,13 @@ app.get("/carrinho", (req, res)=>{res.render("carrinho")})
 app.get("/livro_pesquisado", (req, res)=>{
     res.render("search")
 })
+
+app.get("/info-livro/:id", (req, res)=>{
+    res.render("telaInfo-livro", {livroSelected: livrosDB.findOne(req.params.id) })
+})
+
+
+
 
 app.listen(PORT, ()=>{
     console.log("Servidor rodando na porta: " + PORT)

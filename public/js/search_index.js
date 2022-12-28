@@ -12,7 +12,10 @@ function gerarCard(livros){
     let collectionCards = ""
     livros.forEach(livro=>{
         collectionCards += `<div class="card_books">
-                                <button class="addCarrinho_button" onclick="addCarrinho('${livro.id}')">Adicionar ao carrinho</button>
+                                <div class="background_cardBook">
+                                    <button class="verMais_button" onclick="infoBook('${livro.id}')"><i class='bx bxs-info-circle' ></i></button>
+                                    <button class="addCarrinho_button" onclick="addCarrinho('${livro.id}', this)"><i class='bx bxs-cart-alt'></i></button>
+                                </div>
                                 <img src="${livro.url_capa}" class="img-fluid">
                                 <div class="description_book">
                                     <h1>${livro.titulo}</h1>
@@ -41,4 +44,7 @@ function addCarrinho(idBook){
 }
 function quantity_displayCar(){
     document.querySelector("#quantity_carrinho").innerHTML = carrinho.length
+}
+function infoBook(idBook){
+    location.href = `/info-livro/${idBook}`
 }

@@ -1,3 +1,8 @@
+.translate_X{
+    transform: translateX(-100vw);
+}
+
+
 
 .sectionItems_carrinho h2{
     font-size: 1rem;
@@ -16,6 +21,7 @@
     border-top: 1px solid rgba(0, 0, 0, 0.236);
     padding: 0.6rem 0;
     position: relative;
+    transition: .3s;
 }
 .listItems_carrinho li img{
     height: 100%;

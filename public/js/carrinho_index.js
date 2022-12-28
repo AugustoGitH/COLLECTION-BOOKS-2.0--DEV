@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 const carrinho_functions = {
     livros_getAllCarrinho(){
-        fetch("https://e-commercenode.herokuapp.com/api/livros-home").then(res=>{
+        fetch("/api/livros-home").then(res=>{
             return res.json()
         }).then(json=>{
             let livros = []
@@ -42,7 +42,7 @@ const carrinho_functions = {
                     <p>Total:</p>
                     <span class="valor_totalDisplay">R$${(livro.valorTotal.toFixed(2).toString().replace(".", ","))}</span>
                 </span>
-                <i class='bx bxs-trash-alt iconTrash_button' onclick="carrinho_functions.trashFiles('${livro.id}')"></i>
+                <i class='bx bxs-trash-alt iconTrash_button' onclick="carrinho_functions.trashFiles('${livro.id}', this)"></i>
             </li>`
         })
         document.querySelector(".listItems_carrinho").innerHTML = itemsCar_html
@@ -78,13 +78,13 @@ const carrinho_functions = {
                                         </footer>`
         }
     },
-    trashFiles(id){
+    trashFiles(id, element){
+        element.parentNode.classList.add("translate_X")
+        setTimeout(()=>element.parentNode.remove(), 300)
+
         let carrinho = JSON.parse(localStorage.getItem("carrinho"))
-        let carrinhoTratado = carrinho.filter(item=>{
-            return item !== id
-        })
+        let carrinhoTratado = carrinho.filter(item=>item !== id)
         localStorage.setItem("carrinho", JSON.stringify(carrinhoTratado))
-        document.location.reload(true)
         if(carrinho.length === 1){
             location.href = "/"
         }

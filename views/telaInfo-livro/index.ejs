@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/public/css/telaInfo-livro.css">
+    <%- include('../partials/configsStyle.ejs')%>
+</head>
+<body>
+    <%- include('../partials/headerNav.ejs')%>
+    <section class="infos_book-section">
+        <div class="infos_book-content">
+            <a href="/" class="button_back"><i class='bx bx-x' ></i></a>
+            <div class="image_capa-book--container">
+                <img src=<%=  livroSelected.url_capa%> >
+            </div>
+            <article class="description_infos-book">
+                <h2><%= livroSelected.titulo%></h2>
+                <i><%= livroSelected.autor %> </i>
+                <p class="valor-book">Preço: R$<%= livroSelected.valor.toFixed(2) %> / Capa <%= livroSelected.capa %></p>
+                <div class="container_paragrapher-description">
+                    <p><%= livroSelected.description  %></p>
+                </div>
+                <nav>
+                    <button>Comprar agora</button>
+                    <button onclick="addCarrinho('<%= livroSelected.id%>')">Adicionar no carrinho</button>
+                </nav>
+            </article>
+        </div>
+    </section>
+    <script src="/public/js/telaInfo-livro.js"></script>
+</body>
+</html>

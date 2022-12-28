@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 })
 
 function mostrarCollections(){
-    fetch("https://e-commercenode.herokuapp.com/api/livros-home").then(res=>{
+    fetch("/api/livros-home").then(res=>{
         return res.json()
     }).then(json=>{
         gerarSections(json)
@@ -36,7 +36,11 @@ function criarCards(livros){
 
     livros.forEach(livro=>{
         collectionCards += `<div class="card_books">
-                                <button class="addCarrinho_button" onclick="addCarrinho('${livro.id}', this)">Adicionar ao carrinho</button>
+                                <div class="background_cardBook">
+                                    <button class="verMais_button" onclick="infoBook('${livro.id}')"><i class='bx bxs-info-circle' ></i></button>
+                                    <button class="addCarrinho_button" onclick="addCarrinho('${livro.id}', this)"><i class='bx bxs-cart-alt'></i></button>
+                                </div>
+                                
                                 <img src="${livro.url_capa}" class="img-fluid">
                                 <div class="description_book">
                                     <h1>${livro.titulo}</h1>
@@ -57,13 +61,20 @@ function separatorValue(value){
         dec: arrayDuo[1]
     }
 }
-function addCarrinho(idBook, el){
-    EventClickButtonCarrinho(el)
+function addCarrinho(idBook, button){
     carrinho.push(idBook)
     localStorage.setItem("carrinho", JSON.stringify(carrinho))
     document.querySelector("#quantity_carrinho").innerHTML = carrinho.length
+    effectCarrinhoIcon(button)
+}
+function effectCarrinhoIcon(button){
+    button.innerHTML = "<i class='bx bx-check'></i>"
+    setTimeout(()=> button.innerHTML = "<i class='bx bxs-cart-alt'></i>", 1000)
 }
 
+function infoBook(idBook){
+    location.href = `/info-livro/${idBook}`
+}
 
 function controlLeft(el){
     let carrossel = el.parentNode.querySelector(".section_books-carrosel")
@@ -82,9 +93,3 @@ function controlRight(el){
     })
 }
 
-function EventClickButtonCarrinho(el){
-    el.innerHTML = "Livro adicionado!"
-    setTimeout(()=>{
-        el.innerHTML = "Adicionar ao carrinho"
-    }, 3000)
-}
