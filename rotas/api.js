@@ -14,6 +14,7 @@ router.get("/livros-all", (req, res)=>{
     res.send(JSON.stringify(livros.getAllLivros()))
 })
 router.get("/livros-search/:ids", (req, res)=>{
+    let idsBooks = req.params.ids.split("-")
     console.log(req.params.ids.split("-"))
 })
 

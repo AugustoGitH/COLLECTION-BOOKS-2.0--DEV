@@ -6,7 +6,7 @@ const fs = require("fs")
 const apiRoute = require("./rotas/api")
 
 const livrosDB = require("./banco_dados/livros")
-const PORT = 3000
+const PORT = process.env.PORT || 3000
 
 
 app.use('/public', express.static('public'));
