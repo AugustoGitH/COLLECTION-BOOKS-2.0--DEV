@@ -1,6 +1,6 @@
 .infos_book-section{
     margin-top: -2rem;
-    padding: 4%;
+    padding: 3rem 1rem;
     position: relative;
 }
 .infos_book-content{
@@ -128,7 +128,7 @@
         font-size: 1.4rem;
     }
     .infos_book-content i{
-        font-size: 0.8rem;
+        font-size: 1rem;
     }.infos_book-content .valor-book{
         font-size: 1rem;
     }.infos_book-content p{
@@ -141,10 +141,10 @@
         margin-right: .4rem;
     }
 }
-@media (max-width: 520px){
+@media (max-width: 560px){
     .infos_book-content{
         flex-wrap: wrap;
-        align-items: center;
+        align-items: start;
         justify-content: center;
         
     }
